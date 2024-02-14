@@ -1,3 +1,7 @@
 export default function Home() {
-	return <main>Diego</main>
+	return (
+		<main>
+			<h1>Content</h1>
+		</main>
+	)
 }
