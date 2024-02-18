@@ -6,6 +6,7 @@ import Image from "next/image"
 import menu from "@/app/utils/menu"
 import Link from "next/link"
 import { usePathname, useRouter } from "next/navigation"
+import { logout } from "@/app/utils/Icons"
 
 const SideBar = () => {
 	const { theme } = useGlobalState()
@@ -48,7 +49,7 @@ const SideBar = () => {
 					)
 				})}
 			</ul>
-			<button></button>
+			<button>Logout {logout}</button>
 		</SideBarStyles>
 	)
 }
@@ -204,6 +205,23 @@ const SideBarStyles = styled.nav`
 
 	.active::before {
 		width: 0.3rem;
+	}
+
+	button {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		width: 120px;
+		padding: 0.4rem 0.8rem;
+		border-radius: 0.8rem;
+		font-weight: 500;
+		font-size: 1.2rem;
+		margin: 1rem 3rem;
+		transition: all 0.3s ease;
+
+		&:hover {
+			color: ${(props) => props.theme.colorGrey2};
+		}
 	}
 `
 

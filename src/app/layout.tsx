@@ -1,11 +1,14 @@
 import type { Metadata } from "next"
-import { Inter } from "next/font/google"
+import { Nunito } from "next/font/google"
 import "./globals.css"
 import SideBar from "./components/sidebar/SideBar"
 import GlobalStyleProvider from "./providers/GlobalStyleProvider"
 import ContextProvider from "./providers/ContextProvider"
 
-const inter = Inter({ subsets: ["latin"] })
+const nunito = Nunito({
+	subsets: ["latin"],
+	weight: ["400", "500", "600", "700", "800"],
+})
 
 export const metadata: Metadata = {
 	title: "Task Manager",
@@ -28,7 +31,7 @@ export default function RootLayout({
 					referrerPolicy="no-referrer"
 				/>
 			</head>
-			<body className={inter.className}>
+			<body className={nunito.className}>
 				<ContextProvider>
 					<GlobalStyleProvider>
 						<SideBar />
