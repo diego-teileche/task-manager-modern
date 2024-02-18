@@ -14,7 +14,7 @@ interface Props {
 }
 
 const TaskItem = ({ id, title, description, date, isCompleted }: Props) => {
-	const { theme } = useGlobalState()
+	const { theme, deleteTask } = useGlobalState()
 
 	return (
 		<TaskItemStyled theme={theme}>
@@ -29,7 +29,9 @@ const TaskItem = ({ id, title, description, date, isCompleted }: Props) => {
 				)}
 
 				<button className="edit">{edit}</button>
-				<button className="delete">{trash}</button>
+				<button className="delete" onClick={() => deleteTask(id)}>
+					{trash}
+				</button>
 			</div>
 		</TaskItemStyled>
 	)

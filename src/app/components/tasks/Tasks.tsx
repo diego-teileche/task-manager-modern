@@ -4,7 +4,8 @@ import styled from "styled-components"
 import { useGlobalState } from "../../context/globalProvider"
 import TaskItem from "../taskItem/TaskItem"
 import { plus } from "@/app/utils/Icons"
-// import CreateContent from "../CreateContent"
+import { Span } from "next/dist/trace"
+import CreateContent from "../CreateContent"
 
 interface Props {
 	title: string

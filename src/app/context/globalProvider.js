@@ -27,12 +27,24 @@ export const GlobalProvider = ({ children }) => {
 		}
 	}
 
+	const deleteTask = async (id) => {
+		try {
+			await axios.delete(`/api/tasks/${id}`)
+
+			toast.success("Task deleted")
+			allTasks()
+		} catch (error) {
+			console.log(error)
+			toast.error("Something went wrong")
+		}
+	}
+
 	useEffect(() => {
 		allTasks()
 	}, [])
 
 	return (
-		<GlobalContext.Provider value={{ theme, tasks }}>
+		<GlobalContext.Provider value={{ theme, tasks, deleteTask, isLoading }}>
 			<GlobalUpdateContext.Provider value={{}}>
 				{children}
 			</GlobalUpdateContext.Provider>

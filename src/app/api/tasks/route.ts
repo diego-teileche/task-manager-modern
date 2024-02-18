@@ -52,11 +52,3 @@ export async function PUT(req: Request) {
 		return NextResponse.json({ error: "Error updating task", status: 500 })
 	}
 }
-
-export async function DELETE(req: Request) {
-	try {
-	} catch (error) {
-		console.log("Error Deleting Task:", error)
-		return NextResponse.json({ error: "Error deleting task", status: 500 })
-	}
-}

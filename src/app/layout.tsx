@@ -4,6 +4,7 @@ import "./globals.css"
 import SideBar from "./components/sidebar/SideBar"
 import GlobalStyleProvider from "./providers/GlobalStyleProvider"
 import ContextProvider from "./providers/ContextProvider"
+import NextTopLoader from "nextjs-toploader"
 
 const nunito = Nunito({
 	subsets: ["latin"],
@@ -32,6 +33,11 @@ export default function RootLayout({
 				/>
 			</head>
 			<body className={nunito.className}>
+				<NextTopLoader
+					height={2}
+					color="#27ae60"
+					easing="cubic-bezier(0.53, 0.21, 0, 1)"
+				/>
 				<ContextProvider>
 					<GlobalStyleProvider>
 						<SideBar />
