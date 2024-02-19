@@ -12,7 +12,12 @@ export const GlobalProvider = ({ children }) => {
 	const [selectedTheme, setSelectedTheme] = useState(0)
 	const [isLoading, setIsLoading] = useState(false)
 	const [tasks, setTasks] = useState([])
+	const [modal, setModal] = useState(false)
 	const theme = themes[selectedTheme]
+
+	const openModal = () => setModal(true)
+
+	const closeModal = () => setModal(false)
 
 	const allTasks = async () => {
 		setIsLoading(true)
@@ -41,7 +46,7 @@ export const GlobalProvider = ({ children }) => {
 
 	const updateTask = async (task) => {
 		try {
-			const res = await axios.put("/api/tasks", task)
+			await axios.put("/api/tasks", task)
 
 			allTasks()
 			toast.success("Task updated")
@@ -70,6 +75,10 @@ export const GlobalProvider = ({ children }) => {
 				importantTasks,
 				incompletedTasks,
 				updateTask,
+				modal,
+				openModal,
+				closeModal,
+				allTasks,
 			}}
 		>
 			<GlobalUpdateContext.Provider value={{}}>
