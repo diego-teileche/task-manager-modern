@@ -26,13 +26,13 @@ const SideBar = () => {
 					<Image
 						width={70}
 						height={70}
-						src="/profileMessi.jpeg"
-						alt="Messi Profile Photo"
+						src="/task-manager-logo.png"
+						alt="Task Manager Logo"
 					/>
 				</div>
 				<h1>
-					<span>Lionel</span>
-					<span>Messi</span>
+					<span>Task</span>
+					<span>Manager</span>
 				</h1>
 			</div>
 			<ul className="nav-items">
@@ -116,17 +116,14 @@ const SideBarStyles = styled.nav`
 			height: 70px;
 
 			img {
-				width: 100%;
-				height: auto;
 				display: block;
 				border-radius: 50%;
-				transform: scale(1.2);
 				transition: all 0.5s ease;
 			}
 		}
 
 		> h1 {
-			margin-left: 0.8rem;
+			margin: 0 0.5rem;
 			font-size: clamp(1.2rem, 4vw, 1.4rem);
 			line-height: 100%;
 		}
