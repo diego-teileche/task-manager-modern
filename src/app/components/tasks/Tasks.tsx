@@ -4,8 +4,6 @@ import styled from "styled-components"
 import { useGlobalState } from "../../context/globalProvider"
 import TaskItem from "../taskItem/TaskItem"
 import { plus } from "@/app/utils/Icons"
-import { Span } from "next/dist/trace"
-import CreateContent from "../CreateContent"
 
 interface Props {
 	title: string
@@ -25,7 +23,7 @@ const Tasks = ({ title, tasks }: Props) => {
 						title={task.title}
 						description={task.description}
 						date={task.date}
-						isCompleted={task.completed}
+						isCompleted={task.isCompleted}
 						id={task.id}
 					/>
 				))}

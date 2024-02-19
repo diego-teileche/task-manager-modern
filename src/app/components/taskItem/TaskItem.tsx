@@ -67,7 +67,10 @@ const TaskItemStyled = styled.div`
 		gap: 1.2rem;
 
 		button {
-			font-size: 0.7rem;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			font-size: 0.8rem;
 		}
 	}
 
@@ -89,7 +92,7 @@ const TaskItemStyled = styled.div`
 	.completed,
 	.incompleted {
 		display: inline-block;
-		padding: 0.3rem 0.7rem;
+		padding: 0.3rem 0.8rem;
 		background: ${(props) => props.theme.colorDanger};
 		border-radius: 30px;
 	}

@@ -1,7 +1,12 @@
 "use client"
 
+import Tasks from "../components/tasks/Tasks"
+import { useGlobalState } from "../context/globalProvider"
+
 const page = () => {
-	return <div>incompleted</div>
+	const { incompletedTasks } = useGlobalState()
+
+	return <Tasks title="Incompleted Tasks" tasks={incompletedTasks} />
 }
 
 export default page
