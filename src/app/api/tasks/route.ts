@@ -47,6 +47,14 @@ export async function GET(req: Request) {
 
 export async function PUT(req: Request) {
 	try {
+		const { isCompleted, id } = await req.json()
+
+		const task = await prisma.task.update({
+			where: { id },
+			data: { isCompleted },
+		})
+
+		return NextResponse.json(task)
 	} catch (error) {
 		console.log("Error Updating Task:", error)
 		return NextResponse.json({ error: "Error updating task", status: 500 })
