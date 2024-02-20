@@ -6,10 +6,10 @@ import Image from "next/image"
 import menu from "@/app/utils/menu"
 import Link from "next/link"
 import { usePathname, useRouter } from "next/navigation"
-import { logout } from "@/app/utils/Icons"
+import { arrowLeft, bars, logout } from "@/app/utils/Icons"
 
 const SideBar = () => {
-	const { theme } = useGlobalState()
+	const { theme, collapsed, collapsedMenu } = useGlobalState()
 
 	const router = useRouter()
 	const pathname = usePathname()
@@ -19,7 +19,10 @@ const SideBar = () => {
 	}
 
 	return (
-		<SideBarStyles theme={theme}>
+		<SideBarStyles theme={theme} collapsed={collapsed}>
+			<button className="toggle-nav" onClick={collapsedMenu}>
+				{collapsed ? bars : arrowLeft}
+			</button>
 			<div className="profile">
 				<div className="profile-overlay"></div>
 				<div className="image">
@@ -49,12 +52,12 @@ const SideBar = () => {
 					)
 				})}
 			</ul>
-			<button>Logout {logout}</button>
+			<button className="button">Logout {logout}</button>
 		</SideBarStyles>
 	)
 }
 
-const SideBarStyles = styled.nav`
+const SideBarStyles = styled.nav<{ collapsed: boolean }>`
 	position: relative;
 	width: ${(props) => props.theme.sidebarWidth};
 	background-color: ${(props) => props.theme.colorBg2};
@@ -64,6 +67,33 @@ const SideBarStyles = styled.nav`
 	flex-direction: column;
 	justify-content: space-between;
 	color: ${(props) => props.theme.colorGrey3};
+
+	@media screen and (max-width: 768px) {
+		position: fixed;
+		height: calc(100vh - 2rem);
+		z-index: 10;
+		transition: all 0.3s cubic-bezier(0.53, 0.21, 0, 1);
+		transform: ${(props) =>
+			props.collapsed ? "translateX(-107%)" : "translateX(0)"};
+
+		.toggle-nav {
+			display: block !important;
+		}
+	}
+
+	.toggle-nav {
+		display: none;
+		position: absolute;
+		padding: 0.6rem 1rem;
+		right: -3.05rem;
+		top: 2rem;
+		border-top-right-radius: 0.5rem;
+		border-bottom-right-radius: 0.5rem;
+		background-color: ${(props) => props.theme.colorBg2};
+		border-right: 2px solid ${(props) => props.theme.borderColor2};
+		border-top: 2px solid ${(props) => props.theme.borderColor2};
+		border-bottom: 2px solid ${(props) => props.theme.borderColor2};
+	}
 
 	.profile {
 		margin: 1.5rem;
@@ -204,7 +234,7 @@ const SideBarStyles = styled.nav`
 		width: 0.3rem;
 	}
 
-	button {
+	.button {
 		display: flex;
 		justify-content: space-between;
 		align-items: center;
