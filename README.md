@@ -1,6 +1,6 @@
 ## Modern Task Manager
 
-This is a modern task manager built by `Diego Tech` using:
+This is a modern task manager built by `Diego Tech` by using:
 
 - Next.js
 - React.js
